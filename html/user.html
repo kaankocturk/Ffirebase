@@ -5,4 +5,4 @@
 <input type="password" ng-model='user.password'>
 <label ng-show='state === "register"' for="">Password (again):</label>
 <input ng-show='state === "register"' type="password" ng-model='user.password2'>
-<button ng-click='submit()'>{{state | titlecase}}</button>
+<button ng-click='submit()' class='btn btn-success'>{{state | titlecase}}</button>

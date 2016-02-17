@@ -1,1 +1,30 @@
 <h1>Profile</h1>
+
+<div class="col-sm-6 col-sm-offset-3" ng-if='!profile.name'>
+  <h1>Tell us about yourself</h1>
+  <form role="form">
+    <div class="form-group">
+      <label for="pwd">Name:</label>
+      <input type="text" class="form-control" ng-model='user.name' required>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Age:</label>
+      <input type="number" class="form-control" ng-model='user.age'>
+    </div>
+    <p>Gender:</p>
+    <label class="radio-inline"><input type="radio" name='gender' value="male" ng-model='user.gender'>Male</label>
+    <label class="radio-inline"><input type="radio" name="gender" value="female" ng-model='user.gender'>Female</label>
+    <button type="submit" class="btn btn-default" ng-click='update(user)'>Submit</button>
+  </form>
+</div>
+
+<div class="col-sm-6 col-sm-offset-3" ng-if='profile.name'>
+  <img src="{{profile.password.profileImageUR}}" width='400px'>
+  <h1>Profile</h1>
+  <ul>
+    <li>{{profile.name}}</li>
+    <li>{{profile.age}}</li>
+    <li>{{profile.gender}}</li>
+  </ul>
+  <p>Forget chat! You are an introvert and need noone!</p>
+</div>

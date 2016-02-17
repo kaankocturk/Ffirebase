@@ -15,8 +15,17 @@ app.controller('mainCtrl', function($scope, List, User) {
   };
 });
 
-app.controller('profileCtrl', function() {
+app.controller('profileCtrl', function($scope, Profile, fbAuth){
+  var authData = fbAuth.$getAuth();
+  $scope.profile = Profile(authData.uid);
+  $scope.update = function(user){
+    $scope.profile.name = user.name;
+    $scope.profile.age = user.age;
+    $scope.profile.gender = user.gender;
+    $scope.profile.$save();
+  }
   console.log('profileCtrl');
+  console.log($scope.profile);
 });
 
 
@@ -67,5 +76,3 @@ app.controller('userCtrl', function($scope, $state, Auth) {
     }
   };
 });
-
-

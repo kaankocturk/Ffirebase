@@ -36,8 +36,16 @@ app.service('Auth', function(fbAuth) {
   this.logout = function() {
     fbAuth.$unauth();
   };
-
 });
 
-
-
+app.factory('Profile', function($firebaseObject, fbRef){
+  var User = $firebaseObject.$extend({
+    getFullName: function() {
+      return this.firstName + " " + this.lastName;
+}
+  })
+  return function(userId){
+    var ref = fbRef.child('profiles').child(userId);
+    return new User(ref);
+  }
+});
